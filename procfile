@@ -1,2 +1,1 @@
-web: gunicorn payment_backend:app
-
+web: gunicorn app:app
