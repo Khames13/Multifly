@@ -1,0 +1,44 @@
+<KingScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 40
+        spacing: 20
+        canvas.before:
+            Color:
+                rgba: (0.1, 0.1, 0.1, 1)  # dark grey background
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        Label:
+            id: message_label
+            text: ""
+            font_size: 48
+            color: 1, 1, 0, 1  # gold color
+
+        Image:
+            id: king_image
+            source: 'assets/images/king.png'
+            size_hint: (0.6, 0.6)
+            opacity: 0  # start hidden
+            allow_stretch: True
+            keep_ratio: True
+
+        Image:
+            id: tilt_image
+            source: 'assets/images/tilt.png'
+            size_hint: (0.4, 0.4)
+            opacity: 1  # visible during count animation
+            canvas.before:
+                PushMatrix
+                Rotate:
+                    angle: self.angle if hasattr(self, 'angle') else 0
+                    origin: self.center
+            canvas.after:
+                PopMatrix
+
+        Label:
+            id: score_label
+            text: root.score_text
+            font_size: 36
+            color: 1, 1, 1, 1

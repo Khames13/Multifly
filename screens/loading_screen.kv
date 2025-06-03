@@ -1,0 +1,44 @@
+<LoadingScreen>:
+    FloatLayout:
+        canvas.before:
+            # Pink gradient background (top and bottom rectangles)
+            Color:
+                rgba: 1, 0.7, 0.8, 1  # light pink top
+            Rectangle:
+                size: self.width, self.height / 2
+                pos: self.x, self.y + self.height / 2
+            Color:
+                rgba: 1, 0.4, 0.6, 1  # darker pink bottom
+            Rectangle:
+                size: self.width, self.height / 2
+                pos: self.x, self.y
+
+        Label:
+            text: "Loading"
+            font_size: '40sp'
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {"center_x": 0.5, "center_y": 0.6}
+            color: 1, 1, 1, 1
+
+        # Three square bullets flickering
+        Label:
+            id: bullet1
+            text: "■"
+            font_size: '50sp'
+            pos_hint: {"center_x": 0.43, "center_y": 0.5}
+            color: 1, 1, 1, 0.3
+
+        Label:
+            id: bullet2
+            text: "■"
+            font_size: '50sp'
+            pos_hint: {"center_x": 0.50, "center_y": 0.5}
+            color: 1, 1, 1, 0.3
+
+        Label:
+            id: bullet3
+            text: "■"
+            font_size: '50sp'
+            pos_hint: {"center_x": 0.57, "center_y": 0.5}
+            color: 1, 1, 1, 0.3

@@ -1,0 +1,39 @@
+<OutOfHeartsScreen>:
+    name: "out_of_hearts_screen"
+    BoxLayout:
+        orientation: "vertical"
+        padding: 40
+        spacing: 20
+        size_hint: 0.8, 0.8
+        pos_hint: {"center_x": 0.5, "center_y": 0.5}
+
+        Label:
+            text: "Oops! Out of hearts."
+            font_size: "24sp"
+            color: 1, 0, 0, 1  # red
+            size_hint_y: None
+            height: self.texture_size[1]
+
+        BoxLayout:
+            size_hint_y: None
+            height: self.minimum_height
+            spacing: 10
+            Label:
+                text: "Upgrade"
+                font_size: "20sp"
+                color: 0, 0.5, 1, 1
+                underline: True
+                on_touch_down:
+                    if self.collide_point(*args[1].pos): root.go_to_payment()
+            Label:
+                text: " or play again after"
+                font_size: "20sp"
+                color: 1, 1, 1, 1
+
+        Label:
+            id: countdown_label
+            text: "60:00"
+            font_size: "32sp"
+            color: 1, 1, 1, 1
+            size_hint_y: None
+            height: self.texture_size[1]

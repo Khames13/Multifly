@@ -1,0 +1,20 @@
+<SuccessScreen>:
+    # The root widget is a Screen
+    canvas.before:
+        Color:
+            rgba: 0, 1, 1, 1  # AQUA background
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    # Success word label, centered
+    Label:
+        id: success_word_label
+        text: root.success_word
+        font_size: 48
+        color: 1, 0.4, 0.4, 1
+        center_x: root.center_x
+        center_y: root.center_y
+
+    # Floating symbols will be added dynamically from Python code
+

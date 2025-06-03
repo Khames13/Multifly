@@ -1,0 +1,40 @@
+<OutOfRestartsScreen>:
+    name: "out_of_restarts"
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: 20
+        padding: 50
+
+        Label:
+            text: "🔁 Out of restarts!"
+            font_size: 48
+            color: 1, 0.3, 0.3, 1
+
+        Button:
+            text: "Back to Levels"
+            font_size: 32
+            size_hint: None, None
+            size: 300, 100
+            pos_hint: {"center_x": 0.5}
+            on_release:
+                app.sm.current = "level_select"
+<OutOfRestartsScreen>:
+    name: "out_of_restarts"
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: 20
+        padding: 50
+
+        Label:
+            text: "🔁 Out of restarts!"
+            font_size: 48
+            color: 1, 0.3, 0.3, 1
+
+        Button:
+            text: "Back to Levels"
+            font_size: 32
+            size_hint: None, None
+            size: 300, 100
+            pos_hint: {"center_x": 0.5}
+            on_release:
+                app.sm.current = "level_select"

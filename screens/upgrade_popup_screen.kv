@@ -1,0 +1,40 @@
+<UpgradePopup@Popup>:
+    size_hint: None, None
+    size: 420, 220
+    auto_dismiss: False
+    title: ""
+    background_color: 0.12, 0.12, 0.23, 1  # Dark blue background (30,30,60)
+
+    BoxLayout:
+        orientation: "vertical"
+        padding: 20
+        spacing: 10
+
+        Label:
+            text: "Combined questions. More fun."
+            color: 1, 1, 1, 1
+            font_size: 24
+            size_hint_y: None
+            height: self.texture_size[1]
+
+        Label:
+            text: "Master it. Upgrade to unlock levels."
+            color: 1, 1, 1, 1
+            font_size: 24
+            size_hint_y: None
+            height: self.texture_size[1]
+
+        Widget:
+            size_hint_y: None
+            height: 20
+
+        Button:
+            text: "Upgrade"
+            size_hint: None, None
+            size: 120, 40
+            background_color: 0, 0.78, 1, 1  # cyan
+            color: 0, 0, 0, 1  # black text
+            background_normal: ""
+            pos_hint: {"center_x": 0.5}
+            # You can add on_release: app.some_upgrade_function() here
+

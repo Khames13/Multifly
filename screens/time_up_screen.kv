@@ -1,0 +1,21 @@
+<TimeUpScreen>:
+    name: "time_up"
+    canvas.before:
+        Color:
+            rgba: 1, 1, 1, 1  # White background
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    Label:
+        id: time_up_label
+        text: "Oops! Time is up, Restart level"
+        color: 1, 0, 0, 1  # Red text
+        font_size: '32sp'
+        bold: True
+        halign: 'center'
+        valign: 'middle'
+        size_hint: 1, None
+        height: self.texture_size[1]
+        pos_hint: {"center_x": 0.5, "center_y": 0.5}
+

@@ -1,0 +1,105 @@
+#:import FadeTransition kivy.uix.screenmanager.FadeTransition
+#:import Window kivy.core.window.Window
+
+<LevelButton@Button>:
+    locked: True
+    text: ""
+    font_size: 32
+    background_color: (0.5, 0.5, 0.5, 1) if self.locked else (0, 0.5, 1, 1)
+    disabled: self.locked
+    on_release:
+        if not self.locked: app.select_level(int(self.text))
+
+<UpgradePopup@FloatLayout>:
+    size_hint: None, None
+    size: 400, 200
+    pos_hint: {"center_x": 0.5, "center_y": 0.5}
+    canvas.before:
+        Color:
+            rgba: (0.12, 0.12, 0.24, 1)
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: [12,]
+        Color:
+            rgba: (1, 0.84, 0, 1)
+        Line:
+            width: 3
+            rounded_rectangle: (*self.pos, *self.size, 12)
+
+    Label:
+        text: "Unlock all levels with Premium!"
+        font_size: 28
+        size_hint: None, None
+        size: self.texture_size
+        pos_hint: {"center_x": 0.5, "top": 0.8}
+        color: (1, 1, 1, 1)
+
+    Button:
+        id: upgrade_button
+        text: "Upgrade"
+        size_hint: None, None
+        size: 120, 40
+        pos_hint: {"center_x": 0.5, "y": 0.2}
+        background_color: (0, 0.5, 1, 1)
+        background_normal: ""
+        on_release: app.upgrade()
+
+    Button:
+        id: close_button
+        text: "X"
+        size_hint: None, None
+        size: 25, 25
+        pos_hint: {"right": 1, "top": 1}
+        background_color: (0.78, 0, 0, 1)
+        background_normal: ""
+        font_size: 20
+        on_release: app.close_popup()
+
+<LevelSelectionScreen>:
+    name: "level_selection"
+    canvas.before:
+        Color:
+            rgba: (0, 0.5, 0.5, 1)  # fallback teal color
+        Rectangle:
+            pos: self.pos
+            size: self.size
+        # Background image will be set in Python code dynamically
+
+    BoxLayout:
+        orientation: "vertical"
+        padding: 20
+        spacing: 20
+
+        Label:
+            text: "Select a Level"
+            font_size: 48
+            size_hint_y: None
+            height: self.texture_size[1]
+
+        GridLayout:
+            id: level_grid
+            cols: 5
+            spacing: 10
+            size_hint_y: None
+            height: self.minimum_height
+
+    # Semi-transparent dimmer behind popup
+    FloatLayout:
+        id: popup_container
+        size_hint: None, None
+        size: root.size
+        pos: root.pos
+
+        # black transparent overlay shown only if popup visible
+        canvas.before:
+            Color:
+                rgba: (0, 0, 0, 0.6) if root.showing_upgrade_popup else (0, 0, 0, 0)
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        UpgradePopup:
+            id: upgrade_popup
+            opacity: 1 if root.showing_upgrade_popup else 0
+            disabled: not root.showing_upgrade_popup
