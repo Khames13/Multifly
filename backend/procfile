@@ -1,1 +1,2 @@
-web: python payment_backend.py
+web: gunicorn main:app
+
