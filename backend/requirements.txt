@@ -38,7 +38,7 @@ paramiko==3.4.1
 parso==0.8.4
 platformdirs==4.3.6
 pycparser==2.22
-pygame @ file:///C:/Users/ADMIN/Downloads/pygame-2.6.1-cp310-cp310-win_amd64.whl
+pygame==3.10.11
 Pygments==2.19.1
 pylint==3.2.7
 PyNaCl==1.5.0
